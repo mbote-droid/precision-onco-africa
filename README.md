@@ -5,7 +5,7 @@
 [![Live demo](https://img.shields.io/badge/Live%20demo-Streamlit-8b5cf6?logo=streamlit&logoColor=white)](https://tp53analysis-g8iqzkuhoqmjcjtkvjcgbb.streamlit.app/)
 [![Gemma 4](https://img.shields.io/badge/Multimodal%20core-Gemma%204-8b5cf6)](https://ai.google.dev/gemma)
 [![AMD Instinct](https://img.shields.io/badge/Accelerated%20on-AMD%20Instinct%20%2F%20ROCm-ed1c24)](https://www.amd.com/en/products/accelerators/instinct.html)
-[![Tests](https://img.shields.io/badge/tests-517%20passing-34d399)](tests/)
+[![Tests](https://img.shields.io/badge/tests-566-34d399)](tests/) [![CI](https://github.com/mbote-droid/precision-onco-africa/actions/workflows/ci.yml/badge.svg)](https://github.com/mbote-droid/precision-onco-africa/actions/workflows/ci.yml)
 [![Docker](https://img.shields.io/badge/Deploy-docker%20compose-2496ED?logo=docker&logoColor=white)](docker-compose.yml)
 [![Python](https://img.shields.io/badge/Python-3.11%2B-f0a830?logo=python&logoColor=white)](https://www.python.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-98a0bd)](LICENSE)
@@ -15,7 +15,8 @@
 
 > ## 🏁 Quick Start
 >
-> **What it is:** an offline-capable, honesty-first oncology copilot where six AI
+> **What it is:** an offline-capable, honesty-first oncology copilot built from 26
+> specialist agents. At its heart, a six-agent tumour board of AI
 > specialists **debate a TP53 case, vote toward a consensus, and hunt for
 > evidence that would _contradict_ it** — before it reaches a clinician.
 >
@@ -130,7 +131,7 @@ FHIR R4 + PDF + JSON REPORT  ·  ClinVar safety cross-check
 
 The platform deliberately combines **both** patterns:
 
-- **Modular-monolith core.** The Streamlit app runs as one process; the ~20
+- **Modular-monolith core.** The Streamlit app runs as one process; the 26
   agents are cleanly-separated Python modules (`agents/*.py`) with shared,
   in-process state. This keeps latency low and memory small — essential on
   the target 8GB-RAM / no-GPU hardware, where running each agent as its own
@@ -164,7 +165,7 @@ service if a workload ever demands it.
 ✅ **Hybrid Search**: BM25 keyword + semantic vector retrieval, cross-encoder reranking  
 ✅ **Semantic Cache**: Cosine-similarity cache (0.92 threshold) to avoid redundant LLM calls  
 ✅ **Self-Correction**: Automatic retry + fallback logic (3 attempts)  
-✅ **PII Scrubbing**: SHA-256 hashing — HIPAA-compliant output filtering  
+✅ **PII Scrubbing**: SHA-256 hashing of identifiers in outputs (HIPAA Safe Harbor-style de-identification)  
 ✅ **JSON Guardrails**: Strict output formatting + post-response validation  
 ✅ **Accuracy Benchmark**: Curator scored against ClinVar/IARC ground truth (offline, repeatable — `python -m benchmarks.run_benchmark`)  
 ✅ **ClinVar Hallucination Guard**: every AI answer is cross-checked against ClinVar; conflicting classifications are flagged (Query + Analysis tabs)  
@@ -435,7 +436,7 @@ tp53_analysis/
     │   ├── viz.py                 # 📊 Charts, dispatch network, 3D viewer (pure, tested)
     │   ├── voice_transcriber.py   # 🎤 Whisper integration
     │   ├── rag_cache.py           # Semantic caching
-    │   ├── pii_scrubber.py        # HIPAA SHA-256 scrubbing
+    │   ├── pii_scrubber.py        # SHA-256 PHI scrubbing
     │   └── hybrid_search.py       # BM25 + vector fusion
     ├── benchmarks/                # 🎯 Accuracy benchmark (ClinVar/IARC)
     │   ├── ground_truth.json
@@ -488,7 +489,10 @@ All outputs are HL7 FHIR R4 compatible for EHR integration:
 }
 ```
 
-### HIPAA Compliance
+### Privacy safeguards
+
+> Research use only. These safeguards follow HIPAA and Kenya Data Protection Act principles; they are not a compliance certification.
+
 - ✅ PII scrubbing (automatic)
 - ✅ Audit logging (HIPAA_AUDIT_LOG)
 - ✅ Local inference (no data leaks)

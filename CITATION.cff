@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+type: software
+title: "Precision Onco Africa: offline multi-agent platform for TP53 variant interpretation"
+abstract: "Offline-capable, privacy-preserving multi-agent LLM platform for TP53 variant interpretation in precision oncology, with an AI reasoning-audit layer and a ClinVar/IARC benchmark. Designed to run on 8 GB RAM in low-resource clinical settings."
+authors:
+  - family-names: "Mbote"
+    given-names: "Samuel"
+    orcid: "https://orcid.org/0009-0003-2319-8873"
+    affiliation: "Daktari Genomed Labs"
+repository-code: "https://github.com/mbote-droid/precision-onco-africa"
+url: "https://github.com/mbote-droid/precision-onco-africa"
+license: MIT
+version: "1.0.0"
+date-released: "2026-10-07"
+keywords:
+  - "TP53"
+  - "precision oncology"
+  - "variant interpretation"
+  - "multi-agent systems"
+  - "large language models"
+  - "AI evaluation"
+  - "clinical genomics"
+  - "bioinformatics"
