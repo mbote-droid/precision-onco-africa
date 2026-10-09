@@ -10,6 +10,7 @@ authors:
     affiliation: "Daktari Genomed Labs"
 repository-code: "https://github.com/mbote-droid/precision-onco-africa"
 url: "https://github.com/mbote-droid/precision-onco-africa"
+doi: "10.5281/zenodo.23267199"
 license: MIT
 version: "1.0.0"
 date-released: "2026-10-07"

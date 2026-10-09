@@ -2,6 +2,7 @@
 
  — A local-first, privacy-preserving multi-agent AI platform for TP53 analysis
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23267199.svg)](https://doi.org/10.5281/zenodo.23267199)
 [![Live demo](https://img.shields.io/badge/Live%20demo-Streamlit-8b5cf6?logo=streamlit&logoColor=white)](https://tp53analysis-g8iqzkuhoqmjcjtkvjcgbb.streamlit.app/)
 [![Gemma 4](https://img.shields.io/badge/Multimodal%20core-Gemma%204-8b5cf6)](https://ai.google.dev/gemma)
 [![AMD Instinct](https://img.shields.io/badge/Accelerated%20on-AMD%20Instinct%20%2F%20ROCm-ed1c24)](https://www.amd.com/en/products/accelerators/instinct.html)
